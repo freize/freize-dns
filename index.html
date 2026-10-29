@@ -3,219 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreizeDNS | Быстрый и Приватный DNS</title>
-    
-    <!-- Подключение шрифтов: Inter для текста и Fira Code для заголовков (киберпанк вайб) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Подключение Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['"Fira Code"', 'monospace'],
-                    },
-                    colors: {
-                        neon: {
-                            cyan: '#00f3ff',
-                            purple: '#bc13fe',
-                            dark: '#0a0a0f',
-                            card: '#12121a'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
+    <title>FreizeDNS — Secure DNS Client</title>
+    <!-- Подключаем футуристичный шрифт Orbitron -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Базовые стили и фон */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            background-color: #0a0a0f;
-            color: #ffffff;
-            /* Сетка на фоне для хакерского/техно стиля */
-            background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-color: #0b0f19;
+            color: #e2e8f0;
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 40%);
         }
-
-        /* Неоновые текстовые эффекты */
-        .text-glow-cyan {
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.7), 0 0 20px rgba(0, 243, 255, 0.5), 0 0 40px rgba(0, 243, 255, 0.3);
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 40px 20px;
+            text-align: center;
         }
-        .text-glow-purple {
-            text-shadow: 0 0 10px rgba(188, 19, 254, 0.7), 0 0 20px rgba(188, 19, 254, 0.5);
+        .card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 48px 32px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
-
-        /* Эффекты для карточек фич */
-        .feature-card {
-            background: rgba(18, 18, 26, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 243, 255, 0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: #00f3ff;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3), inset 0 0 10px rgba(0, 243, 255, 0.1);
-        }
-
-        /* Эффект свечения для иконок при наведении на карточку */
-        .feature-card:hover .icon-glow {
-            filter: drop-shadow(0 0 8px #00f3ff);
-            color: #00f3ff;
-        }
-
-        /* Кнопка с неоновым эффектом */
-        .btn-neon {
-            position: relative;
-            background: transparent;
-            color: #00f3ff;
-            border: 2px solid #00f3ff;
+        .subtitle {
+            font-size: 0.95rem;
+            color: #38bdf8;
             text-transform: uppercase;
-            transition: 0.3s;
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2), inset 0 0 10px rgba(0, 243, 255, 0.1);
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            font-weight: 600;
         }
-
-        .btn-neon:hover {
-            background: #00f3ff;
-            color: #0a0a0f;
-            box-shadow: 0 0 20px #00f3ff, 0 0 40px #00f3ff;
-            text-shadow: none;
+        .description {
+            font-size: 1rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 32px;
         }
-
-        /* Анимация пульсации для фонового свечения */
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.7; }
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 36px;
+            text-align: left;
         }
-        .bg-glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0,243,255,0.15) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-            animation: pulse-glow 4s ease-in-out infinite;
+        .feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+        }
+        .feature-item::before {
+            content: "✦";
+            color: #38bdf8;
+            margin-right: 10px;
+            font-size: 0.8rem;
+        }
+        .download-btn {
+            display: inline-block;
+            width: 100%;
+            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+            background: linear-gradient(135deg, #0ea5e9 0%, #1d4ed8 100%);
+        }
+        .footer {
+            margin-top: 24px;
+            font-size: 0.8rem;
+            color: #64748b;
         }
     </style>
 </head>
-<body class="font-sans antialiased flex flex-col min-h-screen relative">
+<body>
 
-    <!-- Фоновые неоновые пятна -->
-    <div class="bg-glow top-20 left-1/4"></div>
-    <div class="bg-glow bottom-40 right-1/4" style="background: radial-gradient(circle, rgba(188,19,254,0.1) 0%, rgba(0,0,0,0) 70%); animation-delay: 2s;"></div>
-
-    <!-- Header / Навигация -->
-    <header class="w-full py-6 px-8 flex justify-between items-center border-b border-neon-cyan/20 bg-neon-dark/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="flex items-center gap-2 cursor-pointer">
-            <!-- Простой логотип -->
-            <svg class="w-8 h-8 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
-            <span class="font-mono text-2xl font-bold tracking-wider text-white">Freize<span class="text-neon-cyan text-glow-cyan">DNS</span></span>
-        </div>
-        <nav class="hidden md:flex gap-8 font-mono text-sm">
-            <a href="#" class="text-gray-400 hover:text-neon-cyan transition-colors">/status</a>
-            <a href="#" class="text-gray-400 hover:text-neon-cyan transition-colors">/docs</a>
-            <a href="#" class="text-gray-400 hover:text-neon-cyan transition-colors">/github</a>
-        </nav>
-    </header>
-
-    <!-- Главная секция (Hero) -->
-    <main class="flex-grow flex flex-col items-center justify-center text-center px-4 py-20 mt-10 z-10">
-        
-        <div class="inline-block mb-4 px-3 py-1 rounded-full border border-neon-purple/30 bg-neon-purple/10 text-neon-purple text-xs font-mono uppercase tracking-widest backdrop-blur-sm">
-            Система активна v2.0.4
-        </div>
-        
-        <h1 class="text-5xl md:text-7xl font-mono font-bold mb-6 tracking-tight">
-            Freize<span class="text-neon-cyan text-glow-cyan">DNS</span>
-        </h1>
-        
-        <p class="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mb-12">
-            Быстрый, безопасный и приватный DNS.
-            <br>
-            <span class="text-sm text-gray-500 font-mono mt-2 block">Верните контроль над своим интернет-трафиком.</span>
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-6">
-            <a href="#setup" class="btn-neon font-mono font-bold py-3 px-8 rounded cursor-pointer">
-                Подключить сейчас
-            </a>
-            <a href="#features" class="font-mono text-gray-400 hover:text-white border border-gray-700 hover:border-gray-500 py-3 px-8 rounded transition-all cursor-pointer bg-gray-800/30">
-                Узнать больше
-            </a>
-        </div>
-    </main>
-
-    <!-- Секция фич (Features) -->
-    <section id="features" class="max-w-6xl mx-auto w-full px-4 py-16 mb-20 z-10">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="container">
+        <div class="card">
+            <h1>FreizeDNS</h1>
+            <div class="subtitle">Secure DNS Client for Android</div>
             
-            <!-- Карточка 1 -->
-            <div class="feature-card rounded-xl p-8 flex flex-col items-start group">
-                <div class="p-3 bg-neon-cyan/10 rounded-lg mb-6 border border-neon-cyan/20">
-                    <svg class="w-8 h-8 text-gray-400 transition-colors duration-300 icon-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-mono font-bold mb-3 text-white group-hover:text-neon-cyan transition-colors">Молниеносная скорость</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Глобальная Anycast-сеть серверов обеспечивает минимальные задержки (ping) и мгновенное разрешение доменных имен независимо от вашего местоположения.
-                </p>
+            <p class="description">
+                Современный и безопасный DNS-клиент для мобильных устройств. Защитите свой трафик, обходите сетевые ограничения и управляйте маршрутизацией в реальном времени.
+            </p>
+
+            <div class="features">
+                <div class="feature-item">Зашифрованные протоколы (DoH / DoT)</div>
+                <div class="feature-item">Умный переключатель для Wi-Fi сетей</div>
+                <div class="feature-item">Автоматическая проверка обновлений</div>
             </div>
 
-            <!-- Карточка 2 -->
-            <div class="feature-card rounded-xl p-8 flex flex-col items-start group">
-                <div class="p-3 bg-neon-cyan/10 rounded-lg mb-6 border border-neon-cyan/20">
-                    <svg class="w-8 h-8 text-gray-400 transition-colors duration-300 icon-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-mono font-bold mb-3 text-white group-hover:text-neon-cyan transition-colors">Абсолютная приватность</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Полная поддержка современных протоколов шифрования DNS-over-HTTPS (DoH) и DNS-over-TLS (DoT). Ваш провайдер больше не видит, какие сайты вы посещаете.
-                </p>
-            </div>
-
-            <!-- Карточка 3 -->
-            <div class="feature-card rounded-xl p-8 flex flex-col items-start group">
-                <div class="p-3 bg-neon-cyan/10 rounded-lg mb-6 border border-neon-cyan/20">
-                    <svg class="w-8 h-8 text-gray-400 transition-colors duration-300 icon-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-mono font-bold mb-3 text-white group-hover:text-neon-cyan transition-colors">Никаких логов</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Мы придерживаемся строгой политики "No-Logs". Мы не собираем, не храним и не продаем историю ваших DNS-запросов третьим лицам.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Футер -->
-    <footer class="w-full border-t border-gray-800 bg-neon-dark py-8 mt-auto z-10">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm font-mono">
-            <div class="mb-4 md:mb-0">
-                &copy; 2026 FreizeDNS Project. Все права защищены.
-            </div>
+            <a href="/FreizeDNS.apk" class="download-btn">Скачать FreizeDNS.apk</a>
             
-            <div class="flex items-center gap-1 hover:text-gray-300 transition-colors cursor-default">
-                Designed with <span class="text-red-500 animate-pulse">❤️</span> by Ai Jiang
+            <div class="footer">
+                powered by freize.net infrastructure
             </div>
         </div>
-    </footer>
+    </div>
 
 </body>
 </html>
