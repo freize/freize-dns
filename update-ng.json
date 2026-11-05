@@ -1,5 +1,5 @@
 {
-  "versionCode": 82,
+  "versionCode": 83,
   "versionName": "1.4.1",
   "changelog": "✓ Обновление дизайна приложения.\n✓ Добавлена отдельная сборка под каждую архитектуру процессора.\n✓ Изменена логика функции обновления приложения.",
   "apkUrl": "https://app.freize.net/updates/FreizeDNS-universal-release.apk"
