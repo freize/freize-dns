@@ -1,6 +1,6 @@
 {
-  "versionCode": 80,
-  "versionName": "1.3.10",
-  "changelog": "✓ Добавлена функция резервирования соединения для совместного использования системного прокси.\n✓ Исправления и улучшения интерфейса.",
-  "apkUrl": "https://app.freize.net/FreizeDNS.apk"
+  "versionCode": 82,
+  "versionName": "1.4.1",
+  "changelog": "✓ Обновление дизайна приложения.\n✓ Добавлена отдельная сборка под каждую архитектуру процессора.\n✓ Изменена логика обновления приложения.",
+  "apkUrl": "https://app.freize.net/updates/FreizeDNS-universal-release.apk"
 }
