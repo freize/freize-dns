@@ -4,142 +4,316 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreizeDNS — Secure DNS Client</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2306b6d4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z'/%3E%3C/svg%3E">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        orbitron: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#050b14',
+                        glass: 'rgba(17, 25, 40, 0.75)',
+                        glassBorder: 'rgba(255, 255, 255, 0.125)',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseSlow: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '.5' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Custom utilities that are complex for Tailwind classes */
         body {
-            background-color: #0b0f19;
-            color: #e2e8f0;
-            font-family: 'Roboto', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 40%);
+            background-color: #050b14;
         }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .card {
-            background: rgba(17, 24, 39, 0.7);
+        
+        .glass-card {
+            background: rgba(17, 24, 39, 0.6);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 48px 32px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255,255,255,0.1);
         }
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 800;
-            font-size: 2.2rem;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
+
+        .text-gradient {
             background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .subtitle {
-            font-size: 0.95rem;
-            color: #38bdf8;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-            font-weight: 600;
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #0284c7 0%, #3b82f6 100%);
+            background-size: 200% auto;
+            transition: 0.5s;
         }
-        .description {
-            font-size: 1rem;
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 32px;
+        
+        .btn-gradient:hover {
+            background-position: right center;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
         }
-        .features {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-bottom: 36px;
-            text-align: left;
-        }
-        .feature-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            color: #cbd5e1;
-            display: flex;
-            align-items: center;
-        }
-        .feature-item::before {
-            content: "✦";
-            color: #38bdf8;
-            margin-right: 10px;
-            font-size: 0.8rem;
-        }
-        .download-btn {
-            display: inline-block;
-            width: 100%;
-            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
-            color: #ffffff;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            padding: 16px 24px;
-            border-radius: 14px;
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
-            background: linear-gradient(135deg, #0ea5e9 0%, #1d4ed8 100%);
-        }
-        .footer {
-            margin-top: 24px;
-            font-size: 0.8rem;
-            color: #64748b;
-        }
+
+        /* Staggered animation delays for children */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
     </style>
 </head>
-<body>
+<body class="min-h-screen text-slate-200 font-sans flex items-center justify-center relative overflow-hidden selection:bg-cyan-500 selection:text-white">
 
-    <div class="container">
-        <div class="card">
-            <h1>FreizeDNS</h1>
-            <div class="subtitle">Secure DNS Client for Android</div>
+    <!-- Animated Background Elements -->
+    <div class="absolute top-0 -left-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
+    <div class="absolute top-0 -right-4 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
+    <div class="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-4000"></div>
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-12 relative z-10 w-full max-w-3xl">
+        
+        <!-- Glassmorphism Card -->
+        <div class="glass-card rounded-3xl p-8 sm:p-12 animate-fade-in-up">
             
-            <p class="description">
-                A modern and secure DNS client for mobile devices. Protect your traffic, bypass network restrictions, and manage routing in real time.
-            </p>
+            <!-- Header Section -->
+            <div class="text-center mb-8">
+                <!-- Shield Icon -->
+                <div class="mx-auto w-16 h-16 bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 rounded-2xl flex items-center justify-center mb-6 border border-white/10 shadow-[0_0_15px_rgba(6,182,212,0.15)] opacity-0 animate-fade-in-up delay-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                    </svg>
+                </div>
 
-            <div class="features">
-                <div class="feature-item">Encrypted DoH protocol</div>
-                <div class="feature-item">Smart switch for trusted Wi-Fi networks</div>
-                <div class="feature-item">Support for authorization</div>
-                <div class="feature-item">Local processing of DNS lists</div>
-                <div class="feature-item">Automatic update checks</div>
-                <div class="feature-item">Support for English and Russian languages</div>
+                <h1 class="font-orbitron font-bold text-4xl sm:text-5xl tracking-wide mb-2 text-gradient opacity-0 animate-fade-in-up delay-200">
+                    FreizeDNS
+                </h1>
+                <h2 class="text-cyan-400 font-semibold uppercase tracking-[0.2em] text-xs sm:text-sm mb-6 opacity-0 animate-fade-in-up delay-200">
+                    Secure DNS Client for Android
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto opacity-0 animate-fade-in-up delay-300">
+                    A modern, secure, and highly customizable DNS client designed specifically for Android. FreizeDNS empowers you to take full control of your internet privacy by encrypting your DNS queries, effectively preventing ISPs and third parties from tracking your online activity. Seamlessly manage custom routing rules in real time, block malicious domains using local lists, and enjoy a safer, unrestricted web experience—whether you're on cellular data or public Wi-Fi networks.
+                </p>
+
+                <!-- App Info Badges -->
+                <div class="flex flex-wrap justify-center gap-3 mt-6 opacity-0 animate-fade-in-up delay-300">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 border border-white/10 text-slate-300">
+                        <svg class="w-3.5 h-3.5 mr-1.5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
+                        <span id="app-version-text">Version 1.0.0</span>
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 border border-white/10 text-slate-300">
+                        <svg class="w-3.5 h-3.5 mr-1.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                        Android 5.0+
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 border border-white/10 text-slate-300">
+                        <svg class="w-3.5 h-3.5 mr-1.5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                        No Root Required
+                    </span>
+                </div>
             </div>
 
-            <a href="/updates/FreizeDNS-universal-release.apk" class="download-btn">Download FreizeDNS.apk</a>
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 opacity-0 animate-fade-in-up delay-400">
+                <!-- Feature 1 -->
+                <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                    <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-sm text-slate-300">Encrypted DoH protocol</span>
+                </div>
+                <!-- Feature 2 -->
+                <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                    <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-sm text-slate-300">Smart switch for trusted Wi-Fi</span>
+                </div>
+                <!-- Feature 3 -->
+                <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                    <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-sm text-slate-300">Support for authorization</span>
+                </div>
+                <!-- Feature 4 -->
+                <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                    <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-sm text-slate-300">Local processing of DNS lists</span>
+                </div>
+                <!-- Feature 5 -->
+                <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                    <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-sm text-slate-300">Automatic update checks</span>
+                </div>
+                <!-- Feature 6 -->
+                <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                    <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-sm text-slate-300">English & Russian languages</span>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mb-10 opacity-0 animate-fade-in-up delay-400">
+                <h3 class="text-lg font-orbitron font-semibold text-slate-200 mb-4 text-center">Frequently Asked Questions</h3>
+                <div class="space-y-3">
+                    <details class="group bg-white/5 border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+                            Do I need a rooted device?
+                            <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-3">
+                            No, FreizeDNS uses Android's local VPN service API to route DNS queries without requiring root access. It's completely safe and works out of the box on standard devices.
+                        </div>
+                    </details>
+                    <details class="group bg-white/5 border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+                            How does it affect battery life?
+                            <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-3">
+                            The application is highly optimized and written natively. It consumes a negligible amount of battery and runs efficiently in the background.
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="opacity-0 animate-fade-in-up delay-400">
+                <button onclick="openModal()" class="btn-gradient group relative flex items-center justify-center w-full py-4 px-6 rounded-2xl text-white font-orbitron font-semibold tracking-wide border border-white/20 transform hover:-translate-y-1 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3 text-white group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download FreizeDNS
+                </button>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-8 text-center opacity-0 animate-fade-in-up delay-400">
+                <div class="flex justify-center gap-4 mb-4">
+                    <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors" title="Telegram Channel">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors" title="Source Code / GitHub">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                    </a>
+                </div>
+                <p class="text-xs text-slate-500 font-medium tracking-wider">
+                    POWERED BY <span class="text-slate-400">FREIZE.NET</span> INFRASTRUCTURE
+                </p>
+            </div>
             
-            <div class="footer">
-                powered by freize.net infrastructure
+        </div>
+    </div>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 opacity-0 pointer-events-none transition-opacity duration-300 bg-black/60 backdrop-blur-sm">
+        <div class="glass-card rounded-3xl w-full max-w-sm p-6 transform scale-95 transition-transform duration-300" id="modalContent">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-orbitron font-bold text-lg text-slate-200">Select Architecture</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 p-2 rounded-xl">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <div class="space-y-3">
+                <a href="/updates/FreizeDNS-universal-release.apk" class="flex justify-between items-center w-full p-4 rounded-xl bg-cyan-500/20 border border-cyan-500/40 hover:bg-cyan-500/30 transition-colors group">
+                    <span class="font-medium text-cyan-50 group-hover:text-white">Universal</span>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-cyan-500 text-white px-2 py-1 rounded-lg">Recommended</span>
+                </a>
+                <a href="/updates/FreizeDNS-arm64-v8a-release.apk" class="flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="font-medium text-sm text-slate-200">ARM64 (v8a)</span>
+                    <span class="text-xs text-slate-400">Modern phones</span>
+                </a>
+                <a href="/updates/FreizeDNS-armeabi-v7a-release.apk" class="flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="font-medium text-sm text-slate-200">ARM32 (v7a)</span>
+                    <span class="text-xs text-slate-400">Older phones</span>
+                </a>
+                <a href="/updates/FreizeDNS-x86_64-release.apk" class="flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="font-medium text-sm text-slate-200">x86_64</span>
+                    <span class="text-xs text-slate-400">Emulators / PC</span>
+                </a>
+                <a href="/updates/FreizeDNS-x86-release.apk" class="flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                    <span class="font-medium text-sm text-slate-200">x86</span>
+                    <span class="text-xs text-slate-400">Old Emulators</span>
+                </a>
             </div>
         </div>
     </div>
 
+    <script>
+        const modal = document.getElementById('downloadModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal() {
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+        }
+
+        // Закрытие модального окна при клике вне его области (по фону)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Загрузка версии из update-ng.json
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/update-ng.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.versionName) {
+                        document.getElementById('app-version-text').textContent = 'Version ' + data.versionName;
+                    }
+                })
+                .catch(error => {
+                    console.log('Could not load version info, keeping default.', error);
+                });
+        });
+    </script>
 </body>
 </html>
