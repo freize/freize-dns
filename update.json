@@ -1,6 +1,6 @@
 {
-  "versionCode": 85,
-  "versionName": "1.6.0",
+  "versionCode": 86,
+  "versionName": "1.6.1",
   "changelog": "✓ Добавлен модуль MTP для Telegram.\n✓ Добавлена подгрузка стратегий модуля DPI\n✓ Исправлены ошибки в логике ядра.",
   "apkUrl": "https://app.freize.net/updates/FreizeDNS-universal-release.apk"
 }
