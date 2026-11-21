@@ -1,7 +1,7 @@
 {
-  "versionCode": 88,
-  "versionName": "1.6.3",
-  "changelog": "✓ Добавлена функция фаервола.\n✓ Обновлён MTP.\n✓ Исправлены баги.\n\nДля доступа к всем функциям введите Freize ID.",
-  "changelog_en": "✓ Firewall feature added. \n✓ MTP updated. \n✓ Bugs fixed. \n\nEnter your Freize ID to access all features.",
+  "versionCode": 91,
+  "versionName": "1.6.5",
+  "changelog": "✓ Сниженео энергопотребление.\n✓ Исправлена ошибка запуска сервиса после ребута.\n✓ Устранены ошибки в интерфейсе..\n✓ Добавлен собственный менеджер обновлений.\n✓ Оптимизация кода ядра.\n\nДля доступа к всем функциям введите Freize ID.\n\nЭтот резиз крайне рекомендован к установке!",
+  "changelog_en": "✓ Reduced power consumption.\n✓ Fixed service startup issue after reboot.\n✓ Fixed UI bugs.\n✓ Added built-in update manager.\n✓ Core code optimization.\n\nEnter your Freize ID to access all features.\n\nThis release is highly recommended!",
   "apkUrl": "https://app.freize.net/updates/FreizeDNS-universal-release.apk"
 }
