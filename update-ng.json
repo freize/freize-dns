@@ -1,7 +1,7 @@
 {
-  "versionCode": 91,
-  "versionName": "1.6.5",
-  "changelog": "✓ Сниженео энергопотребление.\n✓ Исправлена ошибка запуска сервиса после ребута.\n✓ Устранены ошибки в интерфейсе..\n✓ Добавлен собственный менеджер обновлений.\n✓ Оптимизация кода ядра.\n\nДля доступа к всем функциям введите Freize ID.\n\nЭтот резиз крайне рекомендован к установке!",
-  "changelog_en": "✓ Reduced power consumption.\n✓ Fixed service startup issue after reboot.\n✓ Fixed UI bugs.\n✓ Added built-in update manager.\n✓ Core code optimization.\n\nEnter your Freize ID to access all features.\n\nThis release is highly recommended!",
+  "versionCode": 94,
+  "versionName": "1.6.8",
+  "changelog": "✓ Добавлен редактор карточек на главной странице.\n✓ Исправлена ошибка привязки LTE.\n\nДля доступа к всем функциям введите Freize ID.",
+  "changelog_en": "✓ Added a card editor on the main page.\n✓ Fixed an issue with LTE binding.\n\nEnter your Freize ID to access all features.",
   "apkUrl": "https://app.freize.net/updates/FreizeDNS-universal-release.apk"
 }
