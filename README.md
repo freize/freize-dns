@@ -5,7 +5,7 @@
 **Landing page and release hub for FreizeDNS — a secure, customizable DNS-over-HTTPS client for Android & Android TV.**
 
 [![Website](https://img.shields.io/badge/Website-app.freize.net-06b6d4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://app.freize.net)
-[![Platform](https://img.shields.io/badge/Android-5.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](#)
+[![Platform](https://img.shields.io/badge/Android-6.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](#)
 [![Android TV](https://img.shields.io/badge/Android%20TV%20%2F%20Google%20TV-Supported-3b82f6?style=for-the-badge&logo=android&logoColor=white)](#)
 [![Root](https://img.shields.io/badge/Root-Not%20Required-8b5cf6?style=for-the-badge)](#)
 
