@@ -107,7 +107,7 @@
 </head>
 <body class="min-h-screen text-slate-200 font-sans relative overflow-x-hidden selection:bg-cyan-500 selection:text-white">
 
-    <!-- Animated Background (fixed + clipped, не влияет на скролл) -->
+    <!-- Animated Background -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-0 -left-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
         <div class="absolute top-0 -right-4 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
@@ -120,7 +120,7 @@
         <button type="button" data-lang="ru" class="lang-btn">RU</button>
     </div>
 
-    <!-- Main wrapper: центрирование + разрешён вертикальный скролл -->
+    <!-- Main wrapper -->
     <div class="relative z-10 min-h-screen flex items-center justify-center px-4 py-12">
         <div class="container mx-auto relative w-full max-w-3xl">
 
@@ -139,25 +139,29 @@
                         FreizeDNS
                     </h1>
                     <h2 class="text-cyan-400 font-semibold uppercase tracking-[0.2em] text-xs sm:text-sm mb-6 opacity-0 animate-fade-in-up delay-200"
-                        data-en="Secure DNS Client for Android"
-                        data-ru="Защищённый DNS-клиент для Android">
-                        Secure DNS Client for Android
+                        data-en="Secure DNS Client for Android & Android TV"
+                        data-ru="Защищённый DNS-клиент для Android и Android TV">
+                        Secure DNS Client for Android &amp; Android TV
                     </h2>
                     <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mx-auto opacity-0 animate-fade-in-up delay-300"
-                       data-en="A modern, secure, and highly customizable DNS client designed specifically for Android. FreizeDNS empowers you to take full control of your internet privacy by encrypting your DNS queries, effectively preventing ISPs and third parties from tracking your online activity. Seamlessly manage custom routing rules in real time, block malicious domains using local lists, and enjoy a safer, unrestricted web experience—whether you're on cellular data or public Wi-Fi networks."
-                       data-ru="Современный, безопасный и гибко настраиваемый DNS-клиент, созданный специально для Android. FreizeDNS даёт вам полный контроль над приватностью в интернете: DNS-запросы шифруются, и провайдеры и третьи лица больше не могут отслеживать вашу активность. Управляйте правилами маршрутизации в реальном времени, блокируйте вредоносные домены с помощью локальных списков и пользуйтесь безопасным интернетом без ограничений — в мобильной сети и в общественном Wi-Fi.">
-                        A modern, secure, and highly customizable DNS client designed specifically for Android. FreizeDNS empowers you to take full control of your internet privacy by encrypting your DNS queries, effectively preventing ISPs and third parties from tracking your online activity. Seamlessly manage custom routing rules in real time, block malicious domains using local lists, and enjoy a safer, unrestricted web experience—whether you're on cellular data or public Wi-Fi networks.
+                       data-en="A modern, secure, and highly customizable DNS client designed for Android smartphones, tablets, and Android TV. FreizeDNS empowers you to take full control of your internet privacy by encrypting your DNS queries, blocking unwanted traffic with a built-in firewall, and preventing IPv6 leaks. Seamlessly manage custom routing rules in real time, block malicious domains using local lists, and enjoy a safer, unrestricted web experience—whether you're on cellular data, public Wi-Fi, or a wide-screen TV."
+                       data-ru="Современный, безопасный и гибко настраиваемый DNS-клиент для смартфонов, планшетов и Android TV. FreizeDNS даёт вам полный контроль над приватностью в интернете: шифрует DNS-запросы, фильтрует доступ приложений через встроенный фаервол и защищает от утечек IPv6. Управляйте правилами маршрутизации в реальном времени, блокируйте вредоносные домены с помощью локальных списков и пользуйтесь безопасным интернетом без ограничений — в мобильной сети, в общественном Wi-Fi и на большом экране.">
+                        A modern, secure, and highly customizable DNS client designed for Android smartphones, tablets, and Android TV. FreizeDNS empowers you to take full control of your internet privacy by encrypting your DNS queries, blocking unwanted traffic with a built-in firewall, and preventing IPv6 leaks. Seamlessly manage custom routing rules in real time, block malicious domains using local lists, and enjoy a safer, unrestricted web experience—whether you're on cellular data, public Wi-Fi, or a wide-screen TV.
                     </p>
 
                     <!-- Badges -->
                     <div class="flex flex-wrap justify-center gap-3 mt-6 opacity-0 animate-fade-in-up delay-300">
                         <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 border border-white/10 text-slate-300">
                             <svg class="w-3.5 h-3.5 mr-1.5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
-                            <span id="app-version-text">Version 1.0.0</span>
+                            <span id="app-version-text">Version 1.7.1</span>
                         </span>
                         <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 border border-white/10 text-slate-300">
                             <svg class="w-3.5 h-3.5 mr-1.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                             Android 5.0+
+                        </span>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 border border-white/10 text-slate-300">
+                            <svg class="w-3.5 h-3.5 mr-1.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            Android TV / Google TV
                         </span>
                         <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 border border-white/10 text-slate-300">
                             <svg class="w-3.5 h-3.5 mr-1.5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
@@ -171,6 +175,22 @@
                     <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
                         <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                         <span class="text-sm text-slate-300" data-en="Encrypted DoH protocol" data-ru="Зашифрованный протокол DoH">Encrypted DoH protocol</span>
+                    </div>
+                    <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                        <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-sm text-slate-300" data-en="Android TV & Google TV support" data-ru="Поддержка Android TV и Google TV">Android TV &amp; Google TV support</span>
+                    </div>
+                    <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                        <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-sm text-slate-300" data-en="Adaptive UI for wide screens" data-ru="Адаптивный интерфейс под широкие экраны">Adaptive UI for wide screens</span>
+                    </div>
+                    <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                        <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-sm text-slate-300" data-en="Built-in firewall & app exclusions" data-ru="Встроенный фаервол и исключения приложений">Built-in firewall &amp; app exclusions</span>
+                    </div>
+                    <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
+                        <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-sm text-slate-300" data-en="IPv6 blocking & leak protection" data-ru="Блокировка IPv6 и защита от утечек">IPv6 blocking &amp; leak protection</span>
                     </div>
                     <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
                         <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
@@ -190,7 +210,27 @@
                     </div>
                     <div class="flex items-start space-x-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:bg-white/10 transition-colors duration-300">
                         <svg class="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                        <span class="text-sm text-slate-300" data-en="English & Russian languages" data-ru="Английский и русский языки">English & Russian languages</span>
+                        <span class="text-sm text-slate-300" data-en="English & Russian languages" data-ru="Английский и русский языки">English &amp; Russian languages</span>
+                    </div>
+                </div>
+
+                <!-- Latest Changes (from /update-ng.json) -->
+                <div id="changelog-section" class="hidden mb-10 opacity-0 animate-fade-in-up delay-400">
+                    <div class="bg-white/5 border border-cyan-500/20 rounded-2xl p-5 sm:p-6">
+                        <div class="flex items-center justify-between gap-3 mb-3">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                <h3 class="text-base font-orbitron font-semibold text-slate-200"
+                                    data-en="What's New"
+                                    data-ru="Последние изменения">
+                                    What's New
+                                </h3>
+                            </div>
+                            <span id="changelog-version-badge" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30"></span>
+                        </div>
+                        <div id="app-changelog-text" class="text-sm text-slate-300 leading-relaxed whitespace-pre-line"></div>
                     </div>
                 </div>
 
@@ -205,7 +245,7 @@
                         <details class="group bg-white/5 border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden">
                             <summary class="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
                                 <span data-en="Do I need a rooted device?" data-ru="Нужен ли рут на устройстве?">Do I need a rooted device?</span>
-                                <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                             </summary>
                             <div class="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-3"
                                  data-en="No, FreizeDNS uses Android's local VPN service API to route DNS queries without requiring root access. It's completely safe and works out of the box on standard devices."
@@ -213,10 +253,71 @@
                                 No, FreizeDNS uses Android's local VPN service API to route DNS queries without requiring root access. It's completely safe and works out of the box on standard devices.
                             </div>
                         </details>
+
+                        <details class="group bg-white/5 border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden">
+                            <summary class="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+                                <span data-en="Why does Android show a VPN icon when FreizeDNS is active?" data-ru="Почему на экране появляется значок VPN?">Why does Android show a VPN icon when FreizeDNS is active?</span>
+                                <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </summary>
+                            <div class="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-3"
+                                 data-en="Android requires apps to create a local VPN interface in order to intercept DNS requests, block IPv6 leaks, and run the built-in firewall without root. Your regular traffic is not routed through a remote VPN server—only your DNS queries are encrypted."
+                                 data-ru="Android требует создавать локальный VPN-интерфейс, чтобы перехватывать DNS-запросы, блокировать IPv6 и фильтровать трафик фаерволом без root-прав. Ваш обычный трафик не отправляется на сторонние VPN-серверы — шифруются только DNS-запросы.">
+                                Android requires apps to create a local VPN interface in order to intercept DNS requests, block IPv6 leaks, and run the built-in firewall without root. Your regular traffic is not routed through a remote VPN server—only your DNS queries are encrypted.
+                            </div>
+                        </details>
+
+                        <details class="group bg-white/5 border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden">
+                            <summary class="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+                                <span data-en="How do I install FreizeDNS on Android TV or Google TV?" data-ru="Как установить FreizeDNS на Android TV или Google TV?">How do I install FreizeDNS on Android TV or Google TV?</span>
+                                <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </summary>
+                            <div class="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-3"
+                                 data-en="Download the Universal APK (or ARM32 for older TV boxes) and transfer it to your TV via a USB drive, Send Files to TV, or a TV browser/Downloader app. The interface automatically adapts to wide screens and remote control navigation."
+                                 data-ru="Скачайте Universal APK (или ARM32 для старых ТВ-приставок) и перенесите файл на телевизор через флешку, приложение Send Files to TV или браузер/Downloader на ТВ. Интерфейс автоматически подстраивается под широкий экран и управление с пульта.">
+                                Download the Universal APK (or ARM32 for older TV boxes) and transfer it to your TV via a USB drive, Send Files to TV, or a TV browser/Downloader app. The interface automatically adapts to wide screens and remote control navigation.
+                            </div>
+                        </details>
+
+                        <details class="group bg-white/5 border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden">
+                            <summary class="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+                                <span data-en="Which APK architecture should I download?" data-ru="Какую архитектуру APK выбрать?">Which APK architecture should I download?</span>
+                                <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </summary>
+                            <div class="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-3"
+                                 data-en="If you are unsure, choose Universal—it works on all Android devices. For a smaller file size, pick ARM64 (v8a) for modern phones and tablets, ARM32 (v7a) for older phones and budget TV boxes, or x86_64 for PC emulators."
+                                 data-ru="Если сомневаетесь — выбирайте Universal, она подходит для любых устройств. Для меньшего размера файла выберите ARM64 (v8a) для современных смартфонов и планшетов, ARM32 (v7a) для старых телефонов и бюджетных ТВ-приставок, либо x86_64 для эмуляторов на ПК.">
+                                If you are unsure, choose Universal—it works on all Android devices. For a smaller file size, pick ARM64 (v8a) for modern phones and tablets, ARM32 (v7a) for older phones and budget TV boxes, or x86_64 for PC emulators.
+                            </div>
+                        </details>
+
+                        <details class="group bg-white/5 border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden">
+                            <summary class="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+                                <span data-en="What is Freize ID and is it required?" data-ru="Зачем нужен Freize ID и обязателен ли он?">What is Freize ID and is it required?</span>
+                                <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </summary>
+                            <div class="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-3"
+                                 data-en="Basic encrypted DNS protection works immediately without an account. Entering your Freize ID unlocks all additional features and personalized server settings."
+                                 data-ru="Базовая защита DNS работает сразу без регистрации. Ввод Freize ID открывает доступ ко всем дополнительным функциям и персональным настройкам.">
+                                Basic encrypted DNS protection works immediately without an account. Entering your Freize ID unlocks all additional features and personalized server settings.
+                            </div>
+                        </details>
+
+                        <details class="group bg-white/5 border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden">
+                            <summary class="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
+                                <span data-en="Can I exclude specific apps or home Wi-Fi networks?" data-ru="Можно ли добавить приложения или домашний Wi-Fi в исключения?">Can I exclude specific apps or home Wi-Fi networks?</span>
+                                <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </summary>
+                            <div class="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-3"
+                                 data-en="Yes. The built-in firewall lets you control internet access per app or exclude apps from DNS filtering, and Trusted Wi-Fi automatically pauses FreizeDNS when you connect to your home network."
+                                 data-ru="Да. Встроенный фаервол позволяет ограничивать доступ в сеть для выбранных приложений или исключать их из фильтрации, а функция доверенного Wi-Fi автоматически приостанавливает работу при подключении к вашей домашней сети.">
+                                Yes. The built-in firewall lets you control internet access per app or exclude apps from DNS filtering, and Trusted Wi-Fi automatically pauses FreizeDNS when you connect to your home network.
+                            </div>
+                        </details>
+
                         <details class="group bg-white/5 border border-white/5 rounded-xl [&_summary::-webkit-details-marker]:hidden">
                             <summary class="flex cursor-pointer items-center justify-between p-4 text-sm font-medium text-slate-200 hover:text-cyan-400 transition-colors">
                                 <span data-en="How does it affect battery life?" data-ru="Как это влияет на расход батареи?">How does it affect battery life?</span>
-                                <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                <svg class="w-5 h-5 transition-transform duration-300 group-open:-rotate-180 text-slate-400 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                             </summary>
                             <div class="px-4 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/5 pt-3"
                                  data-en="The application is highly optimized and written natively. It consumes a negligible amount of battery and runs efficiently in the background."
@@ -253,7 +354,7 @@
     <!-- Download Modal -->
     <div id="downloadModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 opacity-0 pointer-events-none transition-opacity duration-300 bg-black/60 backdrop-blur-sm">
         <div class="glass-card rounded-3xl w-full max-w-sm p-6 transform scale-95 transition-transform duration-300" id="modalContent">
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex justify-between items-center mb-4">
                 <h3 class="font-orbitron font-bold text-lg text-slate-200"
                     data-en="Select Architecture"
                     data-ru="Выберите архитектуру">
@@ -264,33 +365,54 @@
                 </button>
             </div>
 
-            <div class="space-y-3">
-                <a href="/updates/FreizeDNS-universal-release.apk" class="flex justify-between items-center w-full p-4 rounded-xl bg-cyan-500/20 border border-cyan-500/40 hover:bg-cyan-500/30 transition-colors group">
-                    <span class="font-medium text-cyan-50 group-hover:text-white" data-en="Universal" data-ru="Универсальная">Universal</span>
-                    <span class="text-[10px] uppercase tracking-wider font-bold bg-cyan-500 text-white px-2 py-1 rounded-lg"
-                          data-en="Recommended" data-ru="Рекомендуется">Recommended</span>
+            <!-- Detected Device Info Banner -->
+            <div id="device-detect-banner" class="hidden mb-4 px-3 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/25 text-xs text-cyan-200 flex items-center gap-2">
+                <svg class="w-4 h-4 text-cyan-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span id="device-detect-text"></span>
+            </div>
+
+            <div class="space-y-3" id="arch-links-container">
+                <a id="universal-apk-link" data-arch="universal" href="/updates/FreizeDNS-universal-release.apk" class="arch-link flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <span class="arch-title font-medium text-sm text-slate-200" data-en="Universal" data-ru="Универсальная">Universal</span>
+                    <span class="arch-sub text-xs text-slate-400" data-en="All devices" data-ru="Все устройства">All devices</span>
+                    <span class="arch-badge hidden text-[10px] uppercase tracking-wider font-bold bg-cyan-500 text-white px-2 py-1 rounded-lg"></span>
                 </a>
-                <a href="/updates/FreizeDNS-arm64-v8a-release.apk" class="flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                    <span class="font-medium text-sm text-slate-200">ARM64 (v8a)</span>
-                    <span class="text-xs text-slate-400" data-en="Modern phones" data-ru="Современные телефоны">Modern phones</span>
+                <a data-arch="arm64" href="/updates/FreizeDNS-arm64-v8a-release.apk" class="arch-link flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <span class="arch-title font-medium text-sm text-slate-200">ARM64 (v8a)</span>
+                    <span class="arch-sub text-xs text-slate-400" data-en="Modern phones" data-ru="Современные телефоны">Modern phones</span>
+                    <span class="arch-badge hidden text-[10px] uppercase tracking-wider font-bold bg-cyan-500 text-white px-2 py-1 rounded-lg"></span>
                 </a>
-                <a href="/updates/FreizeDNS-armeabi-v7a-release.apk" class="flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                    <span class="font-medium text-sm text-slate-200">ARM32 (v7a)</span>
-                    <span class="text-xs text-slate-400" data-en="Older phones" data-ru="Старые телефоны">Older phones</span>
+                <a data-arch="arm32" href="/updates/FreizeDNS-armeabi-v7a-release.apk" class="arch-link flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <span class="arch-title font-medium text-sm text-slate-200">ARM32 (v7a)</span>
+                    <span class="arch-sub text-xs text-slate-400" data-en="Older phones & TV" data-ru="Старые телефоны и ТВ">Older phones &amp; TV</span>
+                    <span class="arch-badge hidden text-[10px] uppercase tracking-wider font-bold bg-cyan-500 text-white px-2 py-1 rounded-lg"></span>
                 </a>
-                <a href="/updates/FreizeDNS-x86_64-release.apk" class="flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                    <span class="font-medium text-sm text-slate-200">x86_64</span>
-                    <span class="text-xs text-slate-400" data-en="Emulators / PC" data-ru="Эмуляторы / ПК">Emulators / PC</span>
+                <a data-arch="x86_64" href="/updates/FreizeDNS-x86_64-release.apk" class="arch-link flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <span class="arch-title font-medium text-sm text-slate-200">x86_64</span>
+                    <span class="arch-sub text-xs text-slate-400" data-en="Emulators / PC" data-ru="Эмуляторы / ПК">Emulators / PC</span>
+                    <span class="arch-badge hidden text-[10px] uppercase tracking-wider font-bold bg-cyan-500 text-white px-2 py-1 rounded-lg"></span>
                 </a>
-                <a href="/updates/FreizeDNS-x86-release.apk" class="flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                    <span class="font-medium text-sm text-slate-200">x86</span>
-                    <span class="text-xs text-slate-400" data-en="Old Emulators" data-ru="Старые эмуляторы">Old Emulators</span>
+                <a data-arch="x86" href="/updates/FreizeDNS-x86-release.apk" class="arch-link flex justify-between items-center w-full p-3 px-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <span class="arch-title font-medium text-sm text-slate-200">x86</span>
+                    <span class="arch-sub text-xs text-slate-400" data-en="Old Emulators" data-ru="Старые эмуляторы">Old Emulators</span>
+                    <span class="arch-badge hidden text-[10px] uppercase tracking-wider font-bold bg-cyan-500 text-white px-2 py-1 rounded-lg"></span>
                 </a>
             </div>
         </div>
     </div>
 
     <script>
+        /* ---------- Fallback for local file:// preview ---------- */
+        const FALLBACK_UPDATE_DATA = {
+            versionCode: 96,
+            versionName: "1.7.1",
+            changelog: "✓ Обновлено главное меню.\n✓ Добавлена поддержка Google TV.\n✓ Исправлен конфликт при работе Gemini.\n\nДля доступа к всем функциям введите Freize ID.",
+            changelog_en: "✓ Main menu updated.\n✓ Added support for Google TV.\n✓ Fixed a conflict occurring when using Gemini\n\nEnter your Freize ID to access all features.",
+            apkUrl: "https://app.freize.net/updates/FreizeDNS-universal-release.apk"
+        };
+
         /* ---------- Modal ---------- */
         const modal = document.getElementById('downloadModal');
         const modalContent = document.getElementById('modalContent');
@@ -313,14 +435,171 @@
             if (e.target === modal) closeModal();
         });
 
-        /* ---------- i18n ---------- */
+        /* ---------- State & DOM ---------- */
         let currentLang = 'en';
-        let appVersion = '1.0.0';
-        const versionEl = document.getElementById('app-version-text');
+        let appVersion = '1.7.1';
+        let updateData = null;
 
+        let detectedArch = 'universal'; // 'arm64' | 'arm32' | 'x86_64' | 'x86' | 'universal'
+        let detectedModel = '';
+        let isSpecificArchDetected = false;
+
+        const ARCH_LABELS = {
+            arm64: 'ARM64 (v8a)',
+            arm32: 'ARM32 (v7a)',
+            x86_64: 'x86_64',
+            x86: 'x86'
+        };
+
+        const versionEl = document.getElementById('app-version-text');
+        const changelogSection = document.getElementById('changelog-section');
+        const changelogTextEl = document.getElementById('app-changelog-text');
+        const changelogBadgeEl = document.getElementById('changelog-version-badge');
+        const universalApkLink = document.getElementById('universal-apk-link');
+        const detectBanner = document.getElementById('device-detect-banner');
+        const detectText = document.getElementById('device-detect-text');
+
+        /* ---------- Device & Architecture Detection ---------- */
+        async function detectDeviceArchitecture() {
+            const ua = navigator.userAgent || '';
+            let isAndroid = /android/i.test(ua);
+
+            // 1. Modern User-Agent Client Hints API (Chrome, Edge, Brave, Opera on HTTPS)
+            if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === 'function') {
+                try {
+                    const hints = await navigator.userAgentData.getHighEntropyValues([
+                        'architecture', 'bitness', 'model', 'platform'
+                    ]);
+
+                    if (hints.platform && hints.platform.toLowerCase() === 'android') {
+                        isAndroid = true;
+                    }
+
+                    if (isAndroid) {
+                        if (hints.model) detectedModel = hints.model.trim();
+
+                        const arch = (hints.architecture || '').toLowerCase();
+                        const bits = String(hints.bitness || '');
+
+                        if (arch === 'arm' && bits === '64') {
+                            detectedArch = 'arm64';
+                            isSpecificArchDetected = true;
+                        } else if (arch === 'arm' && bits === '32') {
+                            detectedArch = 'arm32';
+                            isSpecificArchDetected = true;
+                        } else if (arch === 'x86' && bits === '64') {
+                            detectedArch = 'x86_64';
+                            isSpecificArchDetected = true;
+                        } else if (arch === 'x86' && bits === '32') {
+                            detectedArch = 'x86';
+                            isSpecificArchDetected = true;
+                        }
+                    }
+                } catch (e) {
+                    // Fallback below
+                }
+            }
+
+            // 2. Fallback via classic User-Agent string (only on Android)
+            if (isAndroid && !isSpecificArchDetected) {
+                if (/aarch64|arm64/i.test(ua)) {
+                    detectedArch = 'arm64';
+                    isSpecificArchDetected = true;
+                } else if (/armv7|armeabi/i.test(ua)) {
+                    detectedArch = 'arm32';
+                    isSpecificArchDetected = true;
+                } else if (/x86_64|amd64|x64/i.test(ua)) {
+                    detectedArch = 'x86_64';
+                    isSpecificArchDetected = true;
+                } else if (/i686|i386|\bx86\b/i.test(ua)) {
+                    detectedArch = 'x86';
+                    isSpecificArchDetected = true;
+                }
+            }
+
+            renderArchRecommendation();
+        }
+
+        function renderArchRecommendation() {
+            const links = document.querySelectorAll('.arch-link');
+            const badgeText = isSpecificArchDetected
+                ? (currentLang === 'ru' ? 'Для вас' : 'Your device')
+                : (currentLang === 'ru' ? 'Рекомендуется' : 'Recommended');
+
+            links.forEach(link => {
+                const isTarget = link.dataset.arch === detectedArch;
+                const title = link.querySelector('.arch-title');
+                const sub = link.querySelector('.arch-sub');
+                const badge = link.querySelector('.arch-badge');
+
+                if (isTarget) {
+                    link.classList.remove('p-3', 'bg-white/5', 'border-white/5', 'hover:bg-white/10');
+                    link.classList.add('p-4', 'bg-cyan-500/20', 'border-cyan-500/40', 'hover:bg-cyan-500/30');
+                    title.classList.remove('text-sm', 'text-slate-200');
+                    title.classList.add('text-cyan-50', 'group-hover:text-white');
+                    sub.classList.add('hidden');
+                    badge.textContent = badgeText;
+                    badge.classList.remove('hidden');
+                } else {
+                    link.classList.remove('p-4', 'bg-cyan-500/20', 'border-cyan-500/40', 'hover:bg-cyan-500/30');
+                    link.classList.add('p-3', 'bg-white/5', 'border-white/5', 'hover:bg-white/10');
+                    title.classList.remove('text-cyan-50', 'group-hover:text-white');
+                    title.classList.add('text-sm', 'text-slate-200');
+                    sub.classList.remove('hidden');
+                    badge.classList.add('hidden');
+                }
+            });
+
+            // Show detected device banner if we know the model or specific Android arch
+            if (isSpecificArchDetected || detectedModel) {
+                const archLabel = ARCH_LABELS[detectedArch] || '';
+                const parts = [detectedModel, archLabel].filter(Boolean).join(' · ');
+                const prefix = currentLang === 'ru' ? 'Обнаружено: ' : 'Detected: ';
+                detectText.textContent = prefix + parts;
+                detectBanner.classList.remove('hidden');
+            } else {
+                detectBanner.classList.add('hidden');
+            }
+        }
+
+        /* ---------- i18n & Update Info ---------- */
         function updateVersionText() {
             const prefix = currentLang === 'ru' ? 'Версия ' : 'Version ';
             versionEl.textContent = prefix + appVersion;
+        }
+
+        function renderChangelog() {
+            if (!updateData) return;
+
+            const text = currentLang === 'ru'
+                ? (updateData.changelog || updateData.changelog_en || '')
+                : (updateData.changelog_en || updateData.changelog || '');
+
+            if (text.trim()) {
+                changelogTextEl.textContent = text;
+                if (updateData.versionName) {
+                    changelogBadgeEl.textContent = 'v' + updateData.versionName;
+                }
+                changelogSection.classList.remove('hidden');
+            } else {
+                changelogSection.classList.add('hidden');
+            }
+        }
+
+        function applyUpdateData(data) {
+            if (!data) return;
+            updateData = data;
+
+            if (data.versionName) {
+                appVersion = data.versionName;
+                updateVersionText();
+            }
+
+            if (data.apkUrl && universalApkLink) {
+                universalApkLink.href = data.apkUrl;
+            }
+
+            renderChangelog();
         }
 
         function applyLang(lang) {
@@ -337,6 +616,8 @@
             });
 
             updateVersionText();
+            renderChangelog();
+            renderArchRecommendation();
             try { localStorage.setItem('freizedns-lang', lang); } catch (e) {}
         }
 
@@ -354,21 +635,23 @@
                 btn.addEventListener('click', () => applyLang(btn.dataset.lang));
             });
 
-            // Load version
-            fetch('/update-ng.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
-                .then(data => {
-                    if (data && data.versionName) {
-                        appVersion = data.versionName;
-                        updateVersionText();
-                    }
-                })
-                .catch(error => {
-                    console.log('Could not load version info, keeping default.', error);
-                });
+            // Detect device architecture
+            detectDeviceArchitecture();
+
+            // Load version & changelog from /update-ng.json
+            if (window.location.protocol === 'file:') {
+                applyUpdateData(FALLBACK_UPDATE_DATA);
+            } else {
+                fetch('/update-ng.json', { cache: 'no-cache' })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        return response.json();
+                    })
+                    .then(data => applyUpdateData(data))
+                    .catch(error => {
+                        console.log('Could not load update info, keeping default.', error);
+                    });
+            }
         });
     </script>
 </body>
