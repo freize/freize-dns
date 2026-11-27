@@ -1,6 +1,6 @@
 {
-  "versionCode": 94,
-  "versionName": "1.6.8",
-  "changelog": "✓ Добавлен редактор карточек на главной странице.\n✓ Исправлена ошибка привязки LTE.\n\nДля доступа к всем функциям введите Freize ID.",
+  "versionCode": 96,
+  "versionName": "1.7.1",
+  "changelog": "✓ Обновлено главное меню.\n✓ Добавлена поддержка Google TV.\n✓ Исправлен конфликт при работе Gemini.\n\nДля доступа к всем функциям введите Freize ID.",
   "apkUrl": "https://app.freize.net/updates/FreizeDNS-universal-release.apk"
 }
