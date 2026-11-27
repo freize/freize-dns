@@ -462,13 +462,15 @@
         /* ---------- Device & Architecture Detection ---------- */
         async function detectDeviceArchitecture() {
             const ua = navigator.userAgent || '';
+            const platformStr = navigator.platform || '';
             let isAndroid = /android/i.test(ua);
+            let androidMajorVersion = 0;
 
             // 1. Modern User-Agent Client Hints API (Chrome, Edge, Brave, Opera on HTTPS)
             if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === 'function') {
                 try {
                     const hints = await navigator.userAgentData.getHighEntropyValues([
-                        'architecture', 'bitness', 'model', 'platform'
+                        'architecture', 'bitness', 'model', 'platform', 'platformVersion'
                     ]);
 
                     if (hints.platform && hints.platform.toLowerCase() === 'android') {
@@ -477,6 +479,9 @@
 
                     if (isAndroid) {
                         if (hints.model) detectedModel = hints.model.trim();
+                        if (hints.platformVersion) {
+                            androidMajorVersion = parseInt(hints.platformVersion.split('.')[0], 10) || 0;
+                        }
 
                         const arch = (hints.architecture || '').toLowerCase();
                         const bits = String(hints.bitness || '');
@@ -500,20 +505,38 @@
                 }
             }
 
-            // 2. Fallback via classic User-Agent string (only on Android)
+            // 2. Fallback via classic User-Agent & navigator.platform (only on Android)
             if (isAndroid && !isSpecificArchDetected) {
-                if (/aarch64|arm64/i.test(ua)) {
-                    detectedArch = 'arm64';
-                    isSpecificArchDetected = true;
-                } else if (/armv7|armeabi/i.test(ua)) {
-                    detectedArch = 'arm32';
-                    isSpecificArchDetected = true;
-                } else if (/x86_64|amd64|x64/i.test(ua)) {
+                const combined = ua + ' ' + platformStr;
+
+                if (/x86_64|amd64|x64/i.test(combined)) {
                     detectedArch = 'x86_64';
                     isSpecificArchDetected = true;
-                } else if (/i686|i386|\bx86\b/i.test(ua)) {
+                } else if (/i686|i386|\bx86\b/i.test(combined)) {
                     detectedArch = 'x86';
                     isSpecificArchDetected = true;
+                } else if (/aarch64|arm64/i.test(combined)) {
+                    detectedArch = 'arm64';
+                    isSpecificArchDetected = true;
+                } else if (/armv7|armeabi/i.test(combined)) {
+                    detectedArch = 'arm32';
+                    isSpecificArchDetected = true;
+                }
+            }
+
+            // 3. Smart Android heuristics (Chrome on Android often leaves arch/bitness empty)
+            if (isAndroid && !isSpecificArchDetected) {
+                const isTV = /\btv\b|android tv|google tv|bravia|shield|aft[a-z0-9]|mibox|chromecast|sabrina|boreal/i.test(ua + ' ' + detectedModel);
+
+                if (!isTV) {
+                    const isKnownArm64Model = /\b(pixel\s?[2-9]|pixel\s?1\d|pixel\s?fold|pixel\s?tablet|sm-[sfgna]\d|nothing\s|oneplus\s)/i.test(detectedModel);
+                    const hasHighMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory >= 4;
+                    const isModernArmAndroid = androidMajorVersion >= 13 && /arm/i.test(platformStr);
+
+                    if (isKnownArm64Model || hasHighMemory || isModernArmAndroid) {
+                        detectedArch = 'arm64';
+                        isSpecificArchDetected = true;
+                    }
                 }
             }
 
@@ -521,6 +544,7 @@
         }
 
         function renderArchRecommendation() {
+            const container = document.getElementById('arch-links-container');
             const links = document.querySelectorAll('.arch-link');
             const badgeText = isSpecificArchDetected
                 ? (currentLang === 'ru' ? 'Для вас' : 'Your device')
@@ -540,6 +564,11 @@
                     sub.classList.add('hidden');
                     badge.textContent = badgeText;
                     badge.classList.remove('hidden');
+
+                    // Move recommended APK to the top of the modal list
+                    if (container && container.firstElementChild !== link) {
+                        container.prepend(link);
+                    }
                 } else {
                     link.classList.remove('p-4', 'bg-cyan-500/20', 'border-cyan-500/40', 'hover:bg-cyan-500/30');
                     link.classList.add('p-3', 'bg-white/5', 'border-white/5', 'hover:bg-white/10');
